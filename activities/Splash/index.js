@@ -4,20 +4,25 @@ import * as game from '../../actions/GameActions';
 import {connect} from "react-redux";
 import { Actions } from 'react-native-router-flux';
 
-const Splash = (props) => {
-    if (props.games === null) {
-        props.dispatch(game.fetch());
-    } else {
-        Actions.reset('games');
+class Splash extends Component {
+    componentDidMount() {
+        this.props.dispatch(game.fetch());
+    }
+    componentWillReceiveProps(props) {
+        if (props.games !== null) {
+            Actions.reset('games');
+        }
     }
 
-    return (
-        <Container>
-            <Content>
-                <Spinner />
-            </Content>
-        </Container>
-    );
+    render () {
+        return (
+            <Container>
+                <Content>
+                    <Spinner/>
+                </Content>
+            </Container>
+        );
+    }
 }
 
 export default connect((state) => {
