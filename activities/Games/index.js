@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, Container, Content, List, ListItem} from 'native-base';
+import {Text, Container, Content, List, ListItem, Header} from 'native-base';
 import { connect } from 'react-redux';
 import * as game from '../../actions/GameActions';
 

@@ -10,7 +10,7 @@ const Activities = () => (
     <Router>
         <Stack key="root">
             <Scene key="splash" component={Splash} initial hideNavBar />
-            <Scene key="games" component={Games} title="Games"/>
+            <Scene key="games" component={Games} title="Games" hideNavBar/>
         </Stack>
     </Router>
 )

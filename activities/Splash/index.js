@@ -8,7 +8,7 @@ const Splash = (props) => {
     if (props.games === null) {
         props.dispatch(game.fetch());
     } else {
-        Actions.games();
+        Actions.reset('games');
     }
 
     return (
