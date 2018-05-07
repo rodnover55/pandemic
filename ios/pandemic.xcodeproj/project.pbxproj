@@ -50,6 +50,7 @@
 		878CABDDFEE947A48FB48872 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1F9C0C7C90B45A5BC881DCE /* Zocial.ttf */; };
 		3CBD61694FE74AF1BDC135F5 /* libRNI18n.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 085BBB07B0404AB9B7BB4337 /* libRNI18n.a */; };
 		ADF5DE88FA654C3C849584AB /* libRNI18n-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 797F457571A5419BA9215D42 /* libRNI18n-tvOS.a */; };
+		9BDA593368B942E584B8B3C7 /* libRNExitApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 017A8ED50F504630B5CBC5D5 /* libRNExitApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -369,6 +370,8 @@
 		BDBA78C140F34A2885752468 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; name = "RNI18n.xcodeproj"; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		085BBB07B0404AB9B7BB4337 /* libRNI18n.a */ = {isa = PBXFileReference; name = "libRNI18n.a"; path = "libRNI18n.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		797F457571A5419BA9215D42 /* libRNI18n-tvOS.a */ = {isa = PBXFileReference; name = "libRNI18n-tvOS.a"; path = "libRNI18n-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		F1F6EF1458AB4C6E9EF3FB18 /* RNExitApp.xcodeproj */ = {isa = PBXFileReference; name = "RNExitApp.xcodeproj"; path = "../node_modules/react-native-exit-app/ios/RNExitApp.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		017A8ED50F504630B5CBC5D5 /* libRNExitApp.a */ = {isa = PBXFileReference; name = "libRNExitApp.a"; path = "libRNExitApp.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +401,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				3CBD61694FE74AF1BDC135F5 /* libRNI18n.a in Frameworks */,
+				9BDA593368B942E584B8B3C7 /* libRNExitApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +590,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				BDBA78C140F34A2885752468 /* RNI18n.xcodeproj */,
+				F1F6EF1458AB4C6E9EF3FB18 /* RNExitApp.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1245,6 +1250,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1269,6 +1275,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pandemic.app/pandemic";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1349,6 +1356,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1382,6 +1390,7 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1418,6 +1427,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1450,6 +1460,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
