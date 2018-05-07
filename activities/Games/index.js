@@ -5,6 +5,8 @@ import {
     Left, Body, Button, Icon, Drawer
 } from 'native-base';
 
+import Menu from '../../components/Menu';
+
 import { connect } from 'react-redux';
 import * as game from '../../actions/GameActions';
 
@@ -20,7 +22,7 @@ const Games = (props) => {
     return (
         <Drawer
             ref={(ref) => { this.drawer = ref; }}
-            content={<Content style={{backgroundColor:'#FFFFFF'}}><Text>test</Text></Content>}
+            content={<Menu />}
             onClose={() => this.drawer._root.close()}
         >
         <Container>
