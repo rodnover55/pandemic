@@ -17,8 +17,7 @@ const Games = (props) => {
         </ListItem>
     ));
 
-
-
+    // TODO: Сделать Drawer как лейат для активити
     return (
         <Drawer
             ref={(ref) => { this.drawer = ref; }}
