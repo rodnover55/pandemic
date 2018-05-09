@@ -1,34 +1,69 @@
 import React from 'react';
 import {
-    Text, Container, Content, List, ListItem, Header,
-    Left, Body, Button, Icon, Drawer, Picker, Label, Input, Form, Item
+    Text, Container, Content, List, ListItem, Header, Footer,
+    Left, Body, Button, Icon, Drawer, Picker, Label, Input, Item
 } from 'native-base';
+
+import t from 'tcomb-form-native';
 
 import __ from '../../packages/translator';
 
-const NewGame = () => {
-    return (
-        <Container>
-            <Content>
-                <Form>
-                    <Item floatingLabel>
-                        <Label>{__('game.form.title')}</Label>
-                        <Input />
-                    </Item>
-                    <Picker
-                        mode="dropdown"
-                        placeholder={__('game.form.players.label-')}
-                        selectedValue={null}
-                    >
-                        <Picker.Item label={__("game.form.players.1")} value={1} />
-                        <Picker.Item label={__("game.form.players.2")} value={2} />
-                        <Picker.Item label={__("game.form.players.3")} value={3} />
-                        <Picker.Item label={__("game.form.players.4")} value={4} />
-                    </Picker>
-                </Form>
-            </Content>
-        </Container>
-    );
+import * as game from '../../actions/GameActions';
+import {connect} from "react-redux";
+import {Actions} from "react-native-router-flux";
+
+const Players = t.enums({
+    1: __('game.form.players.1'),
+    2: __('game.form.players.2'),
+    3: __('game.form.players.3'),
+    4: __('game.form.players.4')
+});
+
+const Game = t.struct({
+    title: t.String,
+    players: Players
+});
+
+const Form = t.form.Form;
+
+class NewGame extends React.Component {
+    createGame() {
+        const value = this.refs.form.getValue();
+
+        this.props.dispatch(game.create(value));
+        Actions.pop();
+    };
+
+    render() {
+        const options = {
+            fields: {
+                title: __('game.form.title'),
+                players: __('game.form.players.label')
+            }
+        };
+
+        const value = {
+            players: 4
+        }
+
+        return (
+            <Container>
+                <Content>
+                    <Form
+                        ref="form"
+                        type={Game}
+                        options={options}
+                        value={value}
+                    />
+                </Content>
+                <Footer>
+                    <Button onPress={() => this.createGame()}>
+                        <Text>{__('game.create')}</Text>
+                    </Button>
+                </Footer>
+            </Container>
+        );
+    }
 }
 
-export default NewGame;
+export default connect()(NewGame);

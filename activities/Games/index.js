@@ -13,7 +13,7 @@ import * as game from '../../actions/GameActions';
 const Games = (props) => {
     const Items = props.games.map((game) => (
         <ListItem key={game.id}>
-            <Text>{game.id}</Text>
+            <Text>{game.title}</Text>
         </ListItem>
     ));
 
@@ -30,7 +30,6 @@ const Games = (props) => {
                     <Button
                         transparent
                         onPress={() => {
-                            console.log('test');
                             this.drawer._root.open();
                         }}>
                         <Icon name='menu' />

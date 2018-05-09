@@ -7,6 +7,7 @@ I18n.translations = {
         'game': {
             'new': 'New Game',
             'list': 'Games',
+            'create': 'Create',
             'form': {
                 'title': 'Title',
                 'players': {
@@ -24,6 +25,7 @@ I18n.translations = {
         'game': {
             'new': 'Новая игра',
             'list': 'Список игр',
+            'create': 'Создать игру',
             'form': {
                 'title': 'Название игры',
                 'players': {

@@ -4,14 +4,15 @@ import Splash from './activities/Splash';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import Activities from './Activities';
-import promiseMiddleware from 'redux-promise';
+import promise from 'redux-promise';
+import thunk from 'redux-thunk';
 import reducer from './reducers';
 
 type Props = {};
 
 const store = createStore(reducer,
     {},
-    applyMiddleware(promiseMiddleware)
+    applyMiddleware(promise, thunk)
 );
 
 
