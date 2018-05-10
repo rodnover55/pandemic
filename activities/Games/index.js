@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import { ListView } from 'react-native';
+
 import {
     Text, Container, Content, List, ListItem, Header,
     Left, Body, Button, Icon, Drawer, Right
@@ -8,11 +10,11 @@ import {
 import Menu from '../../components/Menu';
 
 import { connect } from 'react-redux';
-import * as game from '../../actions/GameActions';
+import * as games from '../../actions/GameActions';
 
 const Games = (props) => {
-    console.log(props.games);
-    const Items = props.games.map((game) => (
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    const Item = ({game}) => (
         <ListItem key={game.id}>
             <Body>
                 <Text>{game.title}</Text>
@@ -21,7 +23,7 @@ const Games = (props) => {
                 <Text note>{game.created_at ? game.created_at.format('D.MM.YY') : ''}</Text>
             </Right>
         </ListItem>
-    ));
+    );
 
     // TODO: Сделать Drawer как лейат для активити
     return (
@@ -44,7 +46,20 @@ const Games = (props) => {
                 <Body />
             </Header>
             <Content>
-                <List>{Items}</List>
+                <List
+                    dataSource={ds.cloneWithRows(props.games)}
+                    renderRow={game => <Item game={game}/>}
+                    renderRightHiddenRow={(game, secId, rowId, rowMap) => (
+                        <Button full danger onPress={() => {
+                            props.dispatch(games.remove(game));
+                            rowMap[`${secId}${rowId}`].props.closeRow();
+                        }}>
+                            <Icon active name="trash" />
+                        </Button>
+                    )}
+                    rightOpenValue={-75}
+                    disableRightSwipe={true}
+                />
             </Content>
         </Container>
         </Drawer>

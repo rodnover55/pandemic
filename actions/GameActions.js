@@ -36,6 +36,19 @@ const create = thunk.make(
     })
 );
 
+const remove = thunk.make(
+    createAction('GAMES/DELETE', async (dispatch, getStore, game) => {
+        const { games } = getStore();
+
+        await Promise.all(
+            gameStorage.removeItem(game),
+            gameStorage.saveList(games.filter((g) => game.id !== g.id))
+        );
+
+        dispatch(fetch());
+    })
+);
+
 const generateId = (game) => uuid.v4();
 
-export {fetch, create};
+export {fetch, create, remove};

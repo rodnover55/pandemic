@@ -10,11 +10,18 @@ const fetch = async () => {
     }: game);
 }
 
-const saveItem = async (game) => {
-    await AsyncStorage.setItem(`pandemic:games/${game.id}`, JSON.stringify(game));
-}
 const saveList = async (games) => {
-    await AsyncStorage.setItem('pandemic:games', JSON.stringify(games));
+    return await AsyncStorage.setItem('pandemic:games', JSON.stringify(games));
 }
 
-export {fetch, saveItem, saveList};
+const saveItem = async (game) => {
+    return await AsyncStorage.setItem(getItemKey(game), JSON.stringify(game));
+}
+
+const removeItem = async (game) => {
+    return await AsyncStorage.removeItem(getItemKey(game));
+}
+
+const getItemKey = (game) => `pandemic:games/${game.id}`
+
+export {fetch, saveItem, removeItem, saveList};
