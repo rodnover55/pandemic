@@ -1,9 +1,13 @@
 import {AsyncStorage} from "react-native";
+import moment from 'moment';
 
 const fetch = async () => {
-    const games = await AsyncStorage.getItem('pandemic:games');
+    const games = JSON.parse(await AsyncStorage.getItem('pandemic:games') || '[]');
 
-    return games != null ? JSON.parse(games) : [];
+    return games.map((game) => game.created_at != undefined ? {
+        ...game,
+        created_at: moment(game.created_at)
+    }: game);
 }
 
 const saveItem = async (game) => {

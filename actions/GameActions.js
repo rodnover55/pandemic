@@ -4,6 +4,7 @@ import * as gameStorage from '../packages/storage/game'
 import _ from 'lodash';
 import uuid from 'react-native-uuid';
 import * as thunk from '../packages/actions/thunk';
+import moment from 'moment';
 
 
 const fetch = createAction('GAMES/FETCH', async () => {
@@ -22,12 +23,13 @@ const create = thunk.make(
 
         game = {
             id: generateId(game),
+            created_at: moment(),
             ...game
         };
 
         await Promise.all(
             gameStorage.saveItem(game),
-            gameStorage.saveList([...games, _.pick(game, ['id', 'title', 'players'])])
+            gameStorage.saveList([...games, _.pick(game, ['id', 'title', 'players', 'created_at', 'version'])])
         );
 
         dispatch(fetch());

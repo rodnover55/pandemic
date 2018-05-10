@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {
     Text, Container, Content, List, ListItem, Header,
-    Left, Body, Button, Icon, Drawer
+    Left, Body, Button, Icon, Drawer, Right
 } from 'native-base';
 
 import Menu from '../../components/Menu';
@@ -11,9 +11,15 @@ import { connect } from 'react-redux';
 import * as game from '../../actions/GameActions';
 
 const Games = (props) => {
+    console.log(props.games);
     const Items = props.games.map((game) => (
         <ListItem key={game.id}>
-            <Text>{game.title}</Text>
+            <Body>
+                <Text>{game.title}</Text>
+            </Body>
+            <Right>
+                <Text note>{game.created_at ? game.created_at.format('D.MM.YY') : ''}</Text>
+            </Right>
         </ListItem>
     ));
 
