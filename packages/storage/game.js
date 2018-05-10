@@ -6,8 +6,8 @@ const fetch = async () => {
     return games != null ? JSON.parse(games) : [];
 }
 
-const saveItem = (game) => {
-    console.log('Save item', game);
+const saveItem = async (game) => {
+    await AsyncStorage.setItem(`pandemic:games/${game.id}`, JSON.stringify(game));
 }
 const saveList = async (games) => {
     await AsyncStorage.setItem('pandemic:games', JSON.stringify(games));

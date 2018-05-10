@@ -18,17 +18,17 @@ const fetch = createAction('GAMES/FETCH', async () => {
 
 const create = thunk.make(
     createAction('GAMES/CREATE', async (dispatch, getStore, game) => {
-        console.log('start saving game');
         const { games } = getStore();
 
-        console.log('before created game', game);
         game = {
             id: generateId(game),
             ...game
         };
 
-        await gameStorage.saveItem(game);
-        await gameStorage.saveList([...games, _.pick(game, ['id', 'title', 'players'])]);
+        await Promise.all(
+            gameStorage.saveItem(game),
+            gameStorage.saveList([...games, _.pick(game, ['id', 'title', 'players'])])
+        );
 
         dispatch(fetch());
     })
